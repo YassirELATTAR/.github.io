@@ -1205,14 +1205,14 @@ section .container {
   line-height: 1.5; /* Improves readability for multi-line captions */
 }
 
-.figures-image {
+img.figures-image {
   width: 50%; /* Default width for larger screens */
   height: auto; /* Maintain aspect ratio */
   max-width: 100%; /* Prevent overflow */
 }
 
 @media (max-width: 500px) { /* Adjust for smaller screens */
-  .figures-image {
+  img.figures-image {
     width: 90%; /* Increase width to 90% for smaller devices */
   }
 }
