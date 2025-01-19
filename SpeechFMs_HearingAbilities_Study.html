@@ -77,63 +77,639 @@
               <li><strong>Category</strong>: Course Project</li>
               <li><strong>Course</strong>: Research Seminar</li>
               <li><strong>Project date</strong>: January, 2025</li>
-              <li><strong>Project URL</strong>: <a
-                  href="#">None</a></li>
+              <li><strong>Project URL</strong>: <a href="#">None</a></li>
             </ul>
             <h2>Overview:</h2>
             <p>
-              Hearing is an essential skill for artificial intelligence agents functioning in the physical world. It encompasses the ability to perceive and understand a wide range of auditory information. This not only includes spoken language but also extends to other audio events and music. In this project, we aim to delve into the auditory capabilities of cutting-edge spoken language models, exploring the scope of what they can hear. By conducting systematic assessments on benchmark hearing tasks, we will evaluate the performance of these models. Additionally, this exploration will help us investigate the hearing abilities of these models more deeply, understand their limitations, and identify any potential gaps in current research. This thorough understanding could lead to significant enhancements in how AI systems interact with their environment through sound.
+              Hearing is an essential skill for artificial intelligence agents functioning in the physical world. It
+              encompasses the ability to perceive and understand a wide range of auditory information. This not only
+              includes spoken language but also extends to other audio events and music. In this project, we aim to
+              delve into the auditory capabilities of cutting-edge spoken language models, exploring the scope of what
+              they can hear. By conducting systematic assessments on benchmark hearing tasks, we will evaluate the
+              performance of these models. Additionally, this exploration will help us investigate the hearing abilities
+              of these models more deeply, understand their limitations, and identify any potential gaps in current
+              research. This thorough understanding could lead to significant enhancements in how AI systems interact
+              with their environment through sound.
             </p>
           </div>
 
         </div>
         <div class="row">
 
-    <!-- New detailed sections -->
-    <div class="section-details">
-      <div class="container">
-        
-        <!-- SALMONN: Towards Generic Hearing Abilities of LLMs -->
-        <div class="row">
-          <div class="col-lg-12">
-            <h2>SALMONN: Towards Generic Hearing Abilities of LLMs</h2>
-            <p>Explore the development and capabilities of SALMONN, a model designed to endow large language models with the ability to process and understand diverse auditory inputs such as speech, audio events, and music.</p>
-          </div>
-        </div>
+          <!-- New detailed sections -->
+          <div class="section-details">
+            <div class="container">
 
-        <!-- What Do Self-Supervised Speech and Speaker Models Learn? -->
-        <div class="row">
-          <div class="col-lg-12">
-            <h2>What Do Self-Supervised Speech and Speaker Models Learn?</h2>
-            <p>This section discusses the insights gained from self-supervised learning models in speech processing, focusing on how these models discern and interpret complex features of speech and speaker characteristics.</p>
-          </div>
-        </div>
+              <!-- SALMONN: Towards Generic Hearing Abilities of LLMs -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2>SALMONN: Towards Generic Hearing Abilities of LLMs <a href="#ref-salmonn">(Tang et al., 2024)</a></h2>
+                  <p>
+                    <strong>Abstract:</strong> SALMONN is an innovative model that integrates large language models
+                    (LLMs) with dual auditory encoders to achieve advanced auditory comprehension. It processes diverse
+                    inputs including speech, audio events, and music, excelling in both trained tasks (e.g., speech
+                    recognition, audio captioning) and untrained tasks such as audio storytelling and co-reasoning. <i>(<a href="https://github.com/bytedance/SALMONN">model's github page</a>)</i>
+                  </p>
+                  <p>
+                    This section provides a detailed breakdown of the paper, highlighting key architectural components,
+                    methodology, and results.
+                  </p>
+                </div>
+              </div>
 
-        <!-- A Large Scale Evaluation of Speech Foundation Models -->
-        <div class="row">
-          <div class="col-lg-12">
-            <h2>A Large Scale Evaluation of Speech Foundation Models</h2>
-            <p>Review the outcomes and findings from comprehensive evaluations of speech foundation models, emphasizing their performance across various benchmark tasks and their impact on the field of speech processing.</p>
-          </div>
-        </div>
+              <!-- Architecture -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Model Architecture</h3>
+                  <p>
+                    The SALMONN architecture employs a dual encoder system integrating OpenAI's Whisper for speech
+                    processing and BEATs for non-speech audio. Outputs are synchronized via a window-level Q-Former
+                    module, ensuring temporal alignment. The auditory tokens are combined with textual inputs and
+                    processed by a pre-trained Vicuna LLM, which is adapted for multimodal inputs using LoRA.
+                  </p>
+                  <p>
+                    Key innovations include:
+                  </p>
+                  <ul>
+                    <li>Dual encoder system for complementary speech and non-speech processing.</li>
+                    <li>Window-level Q-Former for efficient handling of variable-length audio inputs.</li>
+                    <li>LoRA-based adaptation for integrating auditory embeddings with LLMs.</li>
+                  </ul>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/salmonn-architecture.png" alt="SALMONN Architecture"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 1: SALMONN model architecture, showcasing its dual encoders and
+                      Q-Former integration with Vicuna LLM.</p>
+                  </div>
+                </div>
+              </div>
 
-        <!-- Dynamic-SUPERB: Towards A Dynamic, Collaborative, and Comprehensive Instruction-Tuning Benchmark for Speech -->
-        <div class="row">
-          <div class="col-lg-12">
-            <h2>Dynamic-SUPERB: Towards A Dynamic, Collaborative, and Comprehensive Instruction-Tuning Benchmark for Speech</h2>
-            <p>Detail the advancements brought by Dynamic-SUPERB, a new benchmark framework that fosters dynamic and collaborative research efforts to refine instruction-tuning methods for speech-based AI models.</p>
-          </div>
+              <!-- Methodology -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Methodology</h3>
+                  <p>
+                    SALMONN's training methodology is divided into three stages:
+                  </p>
+                  <ol>
+                    <li><strong>Pre-training:</strong> Focused on speech recognition and audio captioning to establish
+                      high-quality audio-text alignment.</li>
+                    <li><strong>Instruction Tuning:</strong> Multi-task training with supervised data, emphasizing
+                      cross-modal capabilities like translation and emotion recognition.</li>
+                    <li><strong>Activation Tuning:</strong> Fine-tuning to activate emergent abilities for untrained
+                      tasks, addressing task overfitting issues.</li>
+                  </ol>
+                  <p>
+                    This phased approach ensures the model achieves robust performance on both trained and novel
+                    auditory tasks.
+                  </p>
+
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/salmonn-setup.png" alt="SALMONN Setup" class="figures-image" />
+                    <p class="image-caption">Figure 2: Tasks (the three levels), Test Data, Evaluation Metrics, and The
+                      Reference Value.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Results -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Results</h3>
+                  <p>
+                    SALMONN demonstrated competitive performance across a diverse range of benchmarks:
+                  </p>
+                  <ul>
+                    <li>Trained Tasks: Achieved state-of-the-art results in automatic speech recognition, audio
+                      captioning, and speech translation.</li>
+                    <li>Untrained Tasks: Successfully handled storytelling, audio co-reasoning, and multilingual
+                      translation.</li>
+                    <li>Emergent Abilities: Exhibited innovative capabilities such as audio-based storytelling and
+                      complex question answering.</li>
+                  </ul>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/salmonn-results.png" alt="SALMONN Results"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 3: Results summary showcasing SALMONN's performance across trained
+                      and untrained tasks.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Examples -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3><i>Examples of SALMONN on Level 3 Tasks</i></h3>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/salmonn-example-story.png" alt="SALMONN Results"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 4: Audio Story Telling.</p>
+                  </div>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/salmonn-example-sac.png" alt="SALMONN Results"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 5: Speech Audio Coreasoning.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conclusion -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Conclusion</h3>
+                  <p>
+                    SALMONN sets a new standard in multimodal AI research, bridging auditory and linguistic processing.
+                    Its architecture and training methodology provide a foundation for developing generic hearing
+                    capabilities in AI.
+                  </p>
+                </div>
+              </div>
+              <hr style="border: 1px solid #ccc; margin: 40px 0;">
+
+              <!-- What Do Self-Supervised Speech and Speaker Models Learn? -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2>What Do Self-Supervised Speech and Speaker Models Learn? <a href="#ref-ashira">(Ashihara et al., 2024)</a></h2>
+                  <p>
+                    <strong>Abstract:</strong> This paper explores the capabilities of self-supervised learning (SSL)
+                    models in representing speech and speaker characteristics. The study focuses on understanding how
+                    these models capture linguistic and speaker-specific features, using cross-model and layer-wise
+                    analysis. The results shed light on the fundamental differences between speech and speaker SSL
+                    models, as well as fully supervised models.
+                  </p>
+                  <p>
+                    Below is a comprehensive breakdown of the findings, architectural details, and evaluation
+                    methodologies presented in the paper.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Architecture -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Model Architectures</h3>
+                  <p>
+                    The study evaluates three key types of models:
+                  </p>
+                  <ul>
+                    <li><strong>Speech SSL Models:</strong> HuBERT and WavLM, designed for general-purpose speech
+                      representation using masked prediction training.</li>
+                    <li><strong>Speaker SSL Models:</strong> Based on the ECAPA-TDNN architecture, optimized for
+                      speaker-specific tasks using non-contrastive learning frameworks such as DINO.</li>
+                    <li><strong>Supervised Speaker Models:</strong> Conventional models trained with speaker-specific
+                      supervised objectives like angular additive margin softmax (AAM-Softmax).</li>
+                  </ul>
+                  <p>
+                    The architectural differences focus on how the models disentangle speaker and linguistic features at
+                    different layers. For instance, ECAPA-TDNN uses frame-level blocks and an attentive statistics
+                    pooling layer for utterance-level embeddings, whereas speech SSL models employ deeper
+                    transformer-based architectures.
+                  </p>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/ENCAPA-TDNN-speakerModel.png" alt="ECAPA-TDNN Architecture"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 1: Architecture of ECAPA-TDNN used for speaker models.</p>
+                  </div>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/DINO-speakerModel.png" alt="Speech SSL Model Architecture"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 2: Typical architecture of Speech SSL models.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Methodology -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Methodology</h3>
+                  <p>
+                    Two main analysis methods were employed:
+                  </p>
+                  <ol>
+                    <li>
+                      <strong>SUPERB Evaluation Probing Tasks:</strong> A set of tasks from the SUPERB benchmark was
+                      used to probe how different models represent speech and speaker information. Tasks included:
+                      <ul>
+                        <li>Phoneme Recognition (PR) for content evaluation.</li>
+                        <li>Speaker Identification (SID) and Automatic Speaker Verification (ASV) for speaker-specific
+                          evaluation.</li>
+                        <li>Intent Classification (IC) and Emotion Recognition (ER) for semantic and paralinguistic
+                          analysis.</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Layer-Wise Similarity Analysis:</strong> Using the Linear Centered Kernel Alignment
+                      (LinCKA) method, the study measured similarities between layers within and across models to
+                      understand how information is distributed.
+                    </li>
+                  </ol>
+                  <p>
+                    Additionally, the models were trained and evaluated using datasets such as VoxCeleb2, LibriSpeech,
+                    and Libri-Light.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Results -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Results</h3>
+                  <p>
+                    The study revealed key insights into how different models process information:
+                  </p>
+                  <ul>
+                    <li>Speech SSL models like WavLM LARGE excel at linguistic tasks but are less optimized for
+                      speaker-specific tasks.</li>
+                    <li>Speaker SSL models, while adept at capturing speaker-specific features, struggle with linguistic
+                      information.</li>
+                    <li>Fully supervised speaker models achieved the best performance on speaker tasks but lacked
+                      generalization to non-speaker tasks.</li>
+                  </ul>
+                  <p>
+                    Visualization of layer contributions and similarity analysis highlighted the hierarchical nature of
+                    feature extraction in SSL models. For instance:
+                  </p>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/speaker-vs-speech-layer-contributions.png" alt="Layer Contribution Weights"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 3: Layer contribution weights for WavLM LARGE, DINO-based speaker
+                      SSL, and supervised speaker models.</p>
+                  </div>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/speaker-vs-speech-layer-wise-similarity.png" alt="Layer Similarity Analysis"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 4: Layer-wise similarity heatmaps comparing WavLM and speaker
+                      models.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conclusion -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Conclusion</h3>
+                  <p>
+                    The study provides a comprehensive analysis of how SSL models represent speech and speaker
+                    information. It highlights the trade-offs between general-purpose and specialized models and
+                    suggests directions for developing more efficient and effective training methods.
+                  </p>
+                </div>
+              </div>
+
+              <hr style="border: 1px solid #ccc; margin: 40px 0;">
+
+              <!-- A Large Scale Evaluation of Speech Foundation Models -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2>A Large Scale Evaluation of Speech Foundation Models <a href="#ref-yang">(Yang et al., 2024)</a></h2>
+                  <p>
+                    <strong>Abstract:</strong> This paper presents a comprehensive evaluation of Speech Foundation
+                    Models using the
+                    Speech Processing Universal PERformance Benchmark (SUPERB). The study investigates the
+                    generalizability of
+                    self-supervised learning (SSL) models across 15 diverse speech tasks, ranging from phoneme
+                    recognition to
+                    voice conversion. The research introduces a unified benchmarking framework and demonstrates that SSL
+                    models
+                    achieve state-of-the-art (SOTA) performance with minimal downstream customization.
+                  </p>
+                  <p>
+                    This section explores the architecture, methodology, evaluation, and results discussed in the paper.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Architecture -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Architecture of Speech Foundation Models</h3>
+                  <p>
+                    The paper evaluates various SSL models, including wav2vec, HuBERT, and WavLM, each leveraging a
+                    multi-layer
+                    architecture. The hidden representations from all layers are weighted using a learnable weighted-sum
+                    mechanism
+                    to optimize downstream task performance.
+                  </p>
+                  <ul>
+                    <li><strong>Speech Foundation Model:</strong> Encodes waveforms into multi-layer hidden
+                      representations.</li>
+                    <li><strong>Prediction Heads:</strong> Lightweight task-specific heads adapt representations for
+                      individual tasks.</li>
+                    <li><strong>Task Generalization:</strong> Models are frozen, requiring only layer-weight
+                      optimization for each task.</li>
+                  </ul>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/unified-architecture-of-speech-FMs.png" alt="Architecture Diagram"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 1: Unified architecture for Speech Foundation Models with
+                      task-specific prediction heads.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Methodology -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Methodology</h3>
+                  <p>
+                    The SUPERB benchmark standardizes evaluation across 15 tasks, including:
+                  </p>
+                  <ul>
+                    <li>Content Tasks: Phoneme Recognition (PR), Automatic Speech Recognition (ASR), and Keyword
+                      Spotting (KS).</li>
+                    <li>Speaker Tasks: Speaker Identification (SID), Verification (SV), and Diarization (SD).</li>
+                    <li>Generative Tasks: Voice Conversion (VC) and Speech Separation (SS).</li>
+                    <li>Semantic Tasks: Intent Classification (IC) and Speech Translation (ST).</li>
+                  </ul>
+                  <p>
+                    The unified framework ensures consistent evaluation by freezing the foundation model and learning
+                    task-specific
+                    layer weights. Evaluation datasets include LibriSpeech, VoxCeleb, and IEMOCAP, among others.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Results -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Results</h3>
+                  <p>
+                    The evaluation revealed significant findings:
+                  </p>
+                  <ul>
+                    <li>SSL models, particularly WavLM and HuBERT, outperform traditional approaches on most tasks.</li>
+                    <li>Learnable weighted-sum consistently improves performance compared to using the last layer alone.
+                    </li>
+                    <li>While strong on discriminative tasks, SSL models show a performance gap in generative tasks like
+                      SE and SS.</li>
+                  </ul>
+                  <p>
+                    Detailed comparisons highlight WavLM Large achieving near or better results than SOTA non-SSL
+                    methods on
+                    tasks such as SID, IC, and ASR.
+                  </p>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/a-large-scale-evaluation-heatmap.png" alt="Performance Heatmap"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 2: Heatmap comparing performance of 33 models across all SUPERB
+                      tasks.</p>
+                  </div>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/a-large-scale-evaluation-layer-wise-performance.png"
+                      alt="Weighted-Sum vs Last Layer Performance" class="figures-image" />
+                    <p class="image-caption">Figure 3: Comparison of each layer's performance to layer-weights after the
+                      weighted-sum benchmarking. The blue lines are for SID; the red lines are for PR. The solid lines
+                      are for HuBERT Large; the dashed lines are for wav2vec 2.0 Large..</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conclusion -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Conclusion</h3>
+                  <p>
+                    The study confirms the potential of SSL techniques in developing robust Speech Foundation Models.
+                    SUPERB
+                    provides a standardized benchmark for task generalization, highlighting areas for future research,
+                    particularly
+                    in generative tasks and multilingual speech processing.
+                  </p>
+                </div>
+              </div>
+
+
+              <hr style="border: 1px solid #ccc; margin: 40px 0;">
+
+
+              <!-- Dynamic-SUPERB: Towards A Dynamic, Collaborative, and Comprehensive Instruction-Tuning Benchmark for Speech -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2>Dynamic-SUPERB: Towards A Dynamic, Collaborative, and Comprehensive Instruction-Tuning Benchmark
+                    for Speech <a href="#ref-dynamic-superb">(Huang et al., 2024)</a></h2>
+                  <p>
+                    <strong>Abstract:</strong> Dynamic-SUPERB introduces a novel benchmark framework for developing
+                    universal speech models. It focuses on instruction tuning, enabling speech models to generalize
+                    across diverse tasks in a zero-shot setting. With contributions from the research community,
+                    Dynamic-SUPERB dynamically expands task variety, offering comprehensive coverage of 33 tasks and 22
+                    datasets in its initial release. <i>(visit main page on <a href="https://github.com/dynamic-superb/dynamic-superb">github</a>)</i>
+                  </p>
+                  <p>
+                    This section provides an in-depth exploration of its objectives, architecture, baselines, and
+                    evaluation results.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Objectives -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Objectives</h3>
+                  <p>
+                    Dynamic-SUPERB aims to:
+                  </p>
+                  <ul>
+                    <li>Establish a collaborative platform for dynamically expanding speech tasks through instruction
+                      tuning.</li>
+                    <li>Evaluate universal speech models on six dimensions: content, speaker, semantics, degradation,
+                      paralinguistics, and audio.</li>
+                    <li>Bridge the gap between speech processing and natural language processing by leveraging
+                      instruction-based task definitions.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Benchmark Architecture -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Benchmark Architecture</h3>
+                  <p>
+                    The benchmark comprises:
+                  </p>
+                  <ul>
+                    <li><strong>Instruction Format:</strong> Textual instructions guide the models for specific tasks,
+                      such as emotion recognition or speaker verification.</li>
+                    <li><strong>Task Components:</strong> Speech utterances, instructions, and textual labels.</li>
+                    <li><strong>Task Instances:</strong> Unique combinations of tasks and datasets, such as speaker
+                      verification on LibriSpeech.</li>
+                  </ul>
+                  <p>
+                    Dynamic-SUPERB ensures extensibility, enabling seamless integration of new tasks and datasets. It
+                    encourages community contributions to enhance task diversity.
+                  </p>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img
+                      src="https://raw.githubusercontent.com/dynamic-superb/dynamic-superb/main/docs/images/dynamic-superb.png"
+                      alt="Dynamic-SUPERB Task Structure" class="figures-image" />
+                    <p class="image-caption">Figure 1: Dynamic-SUPERB task architecture combining instructions, speech,
+                      and labels.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Baseline Frameworks -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Baseline Frameworks</h3>
+                  <p>
+                    Five baseline approaches were implemented:
+                  </p>
+                  <ol>
+                    <li>
+                      <strong>BERT-GSLM:</strong> Adapts a generative spoken language model with BERT embeddings,
+                      enabling operation in both speech and text modalities.
+                    </li>
+                    <li>
+                      <strong>Whisper:</strong> A large-scale ASR model augmented with instruction inputs, leveraging
+                      its encoder-decoder architecture for generative responses.
+                    </li>
+                    <li>
+                      <strong>ImageBind-LLM:</strong> Combines ImageBind’s multi-modal encoder with LLaMA for
+                      instruction tuning, integrating audio and text representations.
+                    </li>
+                    <li>
+                      <strong>Whisper-LLM:</strong> Enhances ImageBind-LLM by replacing ImageBind with Whisper’s encoder
+                      for improved temporal feature representation.
+                    </li>
+                    <li>
+                      <strong>ASR-ChatGPT:</strong> A concatenative framework using Whisper for transcription and
+                      ChatGPT for instruction-based responses.
+                    </li>
+                  </ol>
+                </div>
+              </div>
+
+              <!-- Results -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Evaluation Results</h3>
+                  <p>
+                    Dynamic-SUPERB’s evaluation spans seen and unseen tasks, highlighting key insights:
+                  </p>
+                  <ul>
+                    <li>Seen tasks showed strong performance, with Whisper-LLM dominating in speaker and degradation
+                      dimensions.</li>
+                    <li>Unseen tasks revealed a performance gap, emphasizing the need for better generalization methods.
+                    </li>
+                    <li>ASR-ChatGPT excelled in semantic tasks but struggled in tasks requiring detailed speech
+                      characteristics.</li>
+                  </ul>
+                  <p>
+                    Tables and heatmaps illustrate the comparative performance across models and tasks.
+                  </p>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/performance-on-seen-tasks.png" alt="Performance Heatmap"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 2: Performance comparison of baseline models on seen tasks.</p>
+                  </div>
+                  <div style="text-align:center; margin: 20px 0;">
+                    <img src="assets/img/performance-on-unseen-tasks.png" alt="Unseen Task Performance"
+                      class="figures-image" />
+                    <p class="image-caption">Figure 3: Accuracy comparison for unseen tasks across baseline models.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Conclusion -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>Conclusion</h3>
+                  <p>
+                    Dynamic-SUPERB sets a new standard in benchmarking for universal speech models by fostering
+                    community-driven collaboration. Its results emphasize the potential and challenges of instruction
+                    tuning in speech processing, paving the way for future research.
+                  </p>
+                </div>
+              </div>
+              <!-- General Key Findings -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2>General Key Findings:</h2>
+                  <ol>
+                    <li>
+                      <strong>Universal Speech Models & Benchmarks:</strong>
+                      SSL and instruction tuning enable general-purpose speech models. Benchmarks like SUPERB and
+                      Dynamic-SUPERB focus on community-driven, task-diverse evaluations.
+                    </li>
+                    <li>
+                      <strong>Task Performance:</strong>
+                      SSL models excel in discriminative tasks (e.g., ASR, speaker ID) but struggle in generative tasks
+                      (e.g., voice conversion). Weighted layer combinations improve performance.
+                    </li>
+                    <li>
+                      <strong>Instruction Tuning:</strong>
+                      Facilitates zero-shot generalization but faces challenges with unseen tasks due to limited task
+                      diversity. Generative label formats add flexibility but complicate evaluation.
+                    </li>
+                    <li>
+                      <strong>Baseline Models:</strong>
+                      Whisper-LLM leads in speaker and degradation tasks, while ASR-ChatGPT is strong in semantic tasks
+                      but loses critical speech details. All models struggle with unseen task generalization.
+                    </li>
+                    <li>
+                      <strong>Future Challenges:</strong>
+                      Improving generative task capabilities, enhancing generalization to unseen tasks, and integrating
+                      richer multi-modal data for universal speech processing.
+                    </li>
+                  </ol>
+                </div>
+              </div>
+
+              <!-- References -->
+              <div class="row" style="padding-top: 200px;">
+                <div class="col-lg-12">
+                  <h2>References</h2>
+                  <ul>
+                    <li id="ref-ashira">
+                      Takanori Ashihara, Marc Delcroix, Takafumi Moriya, Kohei Matsuura, Taichi Asami, and Yusuke Ijima.
+                      <a href="https://arxiv.org/abs/2401.17632" target="_blank">What Do Self-Supervised Speech and
+                        Speaker Models Learn? New Findings From a Cross Model Layer-Wise Analysis</a>, 2024.
+                      arXiv preprint <strong>arXiv:2401.17632</strong>.
+                    </li>
+                    <li id="ref-yang">
+                      Shu-wen Yang, Heng-Jui Chang, Zili Huang, Andy T. Liu, Cheng-I Lai, Haibin Wu, Jiatong Shi,
+                      Xuankai Chang,
+                      Hsiang-Sheng Tsai, Wen-Chin Huang, Tzu-hsun Feng, Po-Han Chi, Yist Y. Lin, Yung-Sung Chuang,
+                      Tzu-Hsien Huang,
+                      Wei-Cheng Tseng, Kushal Lakhotia, Shang-Wen Li, Abdelrahman Mohamed, Shinji Watanabe, and Hung-yi
+                      Lee.
+                      <a href="https://arxiv.org/abs/2404.09385" target="_blank">A Large-Scale Evaluation of Speech
+                        Foundation Models</a>, 2024.
+                      arXiv preprint <strong>arXiv:2404.09385</strong>.
+                    </li>
+                    <li id="ref-dynamic-superb">
+                      Chien-yu Huang, Ke-Han Lu, Shih-Heng Wang, Chi-Yuan Hsiao, Chun-Yi Kuan, Haibin Wu, Siddhant
+                      Arora, Kai-Wei Chang,
+                      Jiatong Shi, Yifan Peng, Roshan Sharma, Shinji Watanabe, Bhiksha Ramakrishnan, Shady Shehata, and
+                      Hung-yi Lee.
+                      <a href="https://arxiv.org/abs/2309.09510" target="_blank">Dynamic-SUPERB: Towards A Dynamic,
+                        Collaborative, and Comprehensive Instruction-Tuning Benchmark for Speech</a>, 2024.
+                      arXiv preprint <strong>arXiv:2309.09510</strong>.
+                    </li>
+                    <li id="ref-salmonn">
+                      Changli Tang, Wenyi Yu, Guangzhi Sun, Xianzhao Chen, Tian Tan, Wei Li, Lu Lu, Zejun Ma, and Chao
+                      Zhang.
+                      <a href="https://arxiv.org/abs/2310.13289" target="_blank">SALMONN: Towards Generic Hearing
+                        Abilities for Large Language Models</a>, 2024.
+                      arXiv preprint <strong>arXiv:2310.13289</strong>.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+
+            </div>
+          </div><!-- End Section Details -->
         </div>
 
       </div>
-    </div><!-- End Section Details -->
-        </div>
-
+      <div class="my-footer">
+        <p>&copy; 2025 Yassir EA. All rights reserved.</p>
       </div>
     </div><!-- End Portfolio Details -->
-
   </main><!-- End #main -->
-
+  
   <div class="credits">
     Made by <a href="https://yassirea.me/">YassirEA</a>
   </div>
