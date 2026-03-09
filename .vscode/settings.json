@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/Users/mac/Documents/GitHub/.github.io/index.html"
+    "livePreview.defaultPreviewPath": "/Users/mac/Documents/GitHub/.github.io/index.html",
+    "liveServer.settings.port": 5501
 }
